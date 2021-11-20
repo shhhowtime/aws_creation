@@ -23,6 +23,7 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             # Installing requirements
             apt-get update
             apt-get install -y git python3 python3-pip
+            pip3 install ansible
             
             # Running docker and gitlab installation
             git clone https://github.com/shhhowtime/gitlab.git
