@@ -26,7 +26,7 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             
             # Running docker and gitlab installation
             git clone https://github.com/shhhowtime/gitlab.git
-            cd diplom
+            cd gitlab
             echo "${var.secret}" > .pass.txt
             ansible-playbook -i inventory/prod main.yml
             cd ..
