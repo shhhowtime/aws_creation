@@ -48,7 +48,7 @@ resource "aws_autoscaling_group" "ASG-Markov-kube-stage-master" {
   }
   tag {
     key = "role"
-    value = "master"
+    value = "master_stage"
     propagate_at_launch = true
   }
 
@@ -74,7 +74,7 @@ resource "aws_autoscaling_group" "ASG-Markov-kube-stage-child" {
   }
   tag {
     key = "role"
-    value = "child"
+    value = "child_stage"
     propagate_at_launch = true
   }
 
