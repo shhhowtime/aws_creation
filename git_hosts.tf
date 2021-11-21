@@ -11,33 +11,32 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
 
   user_data = <<-EOF
             #!/bin/bash
-            # Waiting for network to up
             sleep 1m
 
-            # Addind ssh private key to connect to another hosts
             mkdir /home/ubuntu/.ssh
             echo -e "${var.ssh_private_key}" > /home/ubuntu/.ssh/id_ed25519
             chown ubuntu:ubuntu /home/ubuntu/.ssh/id_ed25519
             chmod 0600 /home/ubuntu/.ssh/id_ed25519
 
-            # Installing requirements
             apt-get update
             apt-get install -y git python3 python3-pip
             pip3 install ansible
             
-            # Running docker and gitlab installation
             git clone https://github.com/shhhowtime/gitlab.git
             cd gitlab
             echo "${var.secret}" > .pass.txt
             ansible-playbook -i inventory/prod main.yml
             cd ..
 
-            #Running kubernetes deployment
             git clone git@github.com:shhhowtime/kubespray.git
             cd kubespray
             echo "${var.secret2}" > .pass.txt
             chmod +x run_stage.sh
             ./run_stage.sh
+            
+            cd ..
+            rm -rf /gitlab
+            rm -rf /kubespray
             EOF
 }
 
