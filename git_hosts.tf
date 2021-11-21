@@ -28,7 +28,7 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             ansible-playbook -i inventory/prod main.yml
             cd ..
 
-            git clone git@github.com:shhhowtime/kubespray.git
+            git clone https://github.com/shhhowtime/kubespray.git
             cd kubespray
             echo "${var.secret2}" > .pass.txt
             chmod +x run_stage.sh
