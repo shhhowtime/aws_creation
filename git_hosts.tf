@@ -13,7 +13,7 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             #!/bin/bash
             sleep 1m
 
-            mkdir /home/ubuntu/.ssh
+            mkdir /root/.ssh
             echo -e "${var.ssh_private_key}" > /home/ubuntu/.ssh/id_ed25519
             chown ubuntu:ubuntu /home/ubuntu/.ssh/id_ed25519
             chmod 0600 /home/ubuntu/.ssh/id_ed25519
