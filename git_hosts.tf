@@ -36,7 +36,6 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             
             cd ..
             rm -rf /gitlab
-            rm -rf /kubespray
             EOF
 }
 
