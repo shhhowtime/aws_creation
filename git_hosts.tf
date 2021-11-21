@@ -14,9 +14,8 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             sleep 1m
 
             mkdir /root/.ssh
-            echo -e "${var.ssh_private_key}" > /home/ubuntu/.ssh/id_ed25519
-            chown ubuntu:ubuntu /home/ubuntu/.ssh/id_ed25519
-            chmod 0600 /home/ubuntu/.ssh/id_ed25519
+            echo -e "${var.ssh_private_key}" > /root/.ssh/id_ed25519
+            chmod 0600 /root/.ssh/id_ed25519
 
             apt-get update
             apt-get install -y git python3 python3-pip
