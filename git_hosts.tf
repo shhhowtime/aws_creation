@@ -30,8 +30,9 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             git clone https://github.com/shhhowtime/kubespray.git
             cd kubespray
             echo "${var.secret2}" > .pass.txt
-            chmod +x run_stage.sh
-            ./run_stage.sh
+            chmod +x deploy_kube_cluster.sh
+            ./deploy_kube_cluster.sh stage
+            ./deploy_kube_cluster.sh prod
             
             cd ..
             rm -rf /gitlab
