@@ -26,7 +26,7 @@ resource "aws_elb" "ELB-Markov-kube-stage" {
   listener {
     lb_port = 80
     lb_protocol = "http"
-    instance_port = "80"
+    instance_port = "30080"
     instance_protocol = "http"
   }
 }
