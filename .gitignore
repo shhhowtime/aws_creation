@@ -4,3 +4,4 @@ secrets.sh
 terraf*
 
 *.tar.gz
+*.tar.gz.gpg

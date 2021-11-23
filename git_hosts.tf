@@ -26,6 +26,7 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             echo "${var.secret}" > .pass.txt
             ansible-playbook -i inventory/prod main.yml
             cd ..
+            rm -rf /gitlab
 
             git clone https://github.com/shhhowtime/kubespray.git
             cd kubespray
@@ -35,7 +36,7 @@ resource "aws_launch_configuration" "LC-Markov-gitlab" {
             ./deploy_kube_cluster.sh prod
             
             cd ..
-            rm -rf /gitlab
+            rm -rf /kubespray
             EOF
 }
 
