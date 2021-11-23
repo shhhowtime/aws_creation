@@ -63,12 +63,6 @@ resource "aws_elb" "ELB-Markov-gitlab" {
     instance_port = "22"
     instance_protocol = "tcp"
   }
-  listener {
-    lb_port = 2222
-    lb_protocol = "tcp"
-    instance_port = "2222"
-    instance_protocol = "tcp"
-  }
 }
 
 resource "aws_autoscaling_group" "ASG-Markov-gitlab" {

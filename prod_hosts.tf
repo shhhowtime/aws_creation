@@ -28,6 +28,12 @@ resource "aws_elb" "ELB-Markov-kube-prod" {
     instance_port = "30080"
     instance_protocol = "http"
   }
+  listener {
+    lb_port = 3000
+    lb_protocol = "http"
+    instance_port = "30000"
+    instance_protocol = "http"
+  }
 }
 
 resource "aws_autoscaling_group" "ASG-Markov-kube-prod-master" {
